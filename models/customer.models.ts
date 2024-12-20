@@ -1,8 +1,13 @@
-import { Schema, Types, model } from "mongoose";
+import { ICustomer } from "@/types/customer.types";
+import { Model, Schema, Types, model } from "mongoose";
 
-const customerSchema = new Schema({
+interface CustomerModel extends Model<ICustomer> {
+  createCustomer(user_id: string, customer_name: string): Promise<ICustomer>
+}
+
+const customerSchema = new Schema<ICustomer, CustomerModel>({
   user_id: {
-    type: Types.ObjectId,
+    type: String,
     required: true
   },
   debt: {
@@ -12,9 +17,25 @@ const customerSchema = new Schema({
   credit: {
     type: Number,
     default: 0
+  },
+  name: {
+    type: String
   }
 })
 
-const Customer = model("Customer", customerSchema)
+customerSchema.static(
+  "createCustomer",
+  async function createCustomer(user_id: string, customer_name: string) {
+    try {
+      const newCustomer = await this.create({ user_id, name: customer_name })
+
+      return newCustomer
+    } catch (e) {
+      throw Error("Failed to create a new customer!")
+    }
+  }
+)
+
+const Customer = model<ICustomer, CustomerModel>("Customer", customerSchema)
 
 export default Customer

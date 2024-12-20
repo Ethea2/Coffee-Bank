@@ -1,9 +1,10 @@
 import { Types } from "mongoose";
 
 export interface ITransaction {
-  _id?: Types.ObjectId | String
-  user_id: Types.ObjectId | String
-  customer_id: Types.ObjectId | String
+  _id?: Types.ObjectId | string
+  user_id: string
+  customer_id: string
+  order_id: string
   quantity: Number
   total_price: Number
   transaction_date?: Date

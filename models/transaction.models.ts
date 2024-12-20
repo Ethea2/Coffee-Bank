@@ -3,12 +3,16 @@ import { Schema, Types, model } from "mongoose"
 
 const transactionSchema = new Schema({
   user_id: {
-    type: Types.ObjectId,
+    type: String,
     required: true
   },
   customer_id: {
-    type: Types.ObjectId,
+    type: String,
     required: true
+  },
+  order_id: {
+    type: String,
+    required: true,
   },
   quantity: {
     type: Number
