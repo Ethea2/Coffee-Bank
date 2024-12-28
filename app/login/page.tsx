@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react"
 
 const Login = () => {
-  const [username, setUsername] = useState<String>("")
-  const [password, setPassword] = useState<String>("")
+  const [username, setUsername] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
   const [showme, setShowme] = useState<boolean>(false)
 
   useEffect(() => {

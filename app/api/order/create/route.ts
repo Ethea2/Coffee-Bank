@@ -22,6 +22,7 @@ export const POST = async (request: Request) => {
 
     return NextResponse.json({ order, message: "Order Successfully created!" })
   } catch (e) {
-    return NextResponse.json({ message: "Something went wrong with creating an order" }, { status: 500 })
+    const errorType = e as Error
+    return NextResponse.json({ message: errorType.message }, { status: 500 })
   }
 }
