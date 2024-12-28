@@ -5,9 +5,11 @@ export interface ITransaction {
   user_id: string
   customer_id: string
   order_id: string
-  quantity: Number
+  transaction_description: string
   total_price: Number
   transaction_date?: Date
+  transaction_type: "order" | "credit"
+  payment_type: "debt" | "credit"
 }
 //   user_id: {
 //     type: Types.ObjectId,
