@@ -2,7 +2,7 @@ import { connectDB } from "@/libs/mongodb"
 import Transaction from "@/models/transaction.models"
 import { NextResponse } from "next/server"
 
-export const GET = async (request: Request, { params }: { params: { customer_id: string } }) => {
+export const GET = async ({ params }: { params: { customer_id: string } }) => {
   connectDB()
   const { customer_id } = await params
   try {

@@ -2,7 +2,7 @@ import { connectDB } from "@/libs/mongodb"
 import Transaction from "@/models/transaction.models"
 import { NextResponse } from "next/server"
 
-export const GET = async (request: Request, { params }: { params: { transaction_type: string } }) => {
+export const GET = async ({ params }: { params: { transaction_type: string } }) => {
   connectDB()
   const { transaction_type } = await params
   console.log(transaction_type)
